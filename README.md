@@ -7,10 +7,10 @@ This repository includes the Data Analysis of IPL stats for batting and bowling 
 The dataset used for this analysis has been scraped online from website www.espncricinfo.com using python script. It has been scraped in the csv format file, one each for batting and bowling stats, consisting of 200 rows and 15 columns originally(without cleaning).
 
 ## Tools Used
-- Python (Data Scraping)
+- Python (Data Scraping using Pandas)
 - MS Excel (Data Cleaning)
 - MySQLWorkbench (Data Exploration/EDA)
-- Power BI (Data Visualization)
+- Power BI (Data Modelling & Visualization)
 - Power Point (Reporting & summary)
 
 ## Data Scraping
@@ -53,6 +53,14 @@ The analysis results are summarized as below:
 ## Limitations
 1. As the scraped data was mainly for batting and bowling records, there was no data scraped for match results alongwith these stats to perform more deeper and related analysis for these records.
 2. The data available in the original dataset did not have a complete date column with Day, Month, Year to perform time series analysis properly and more deeply.
+
+## Data Source Disclaimer
+1. Data was collected from [ESPNcricinfo](https://www.espncricinfo.com/) using custom Python scripts for **educational and non-commercial purposes only**.
+2. This project is intended for personal portfolio and learning. No raw HTML or commercial redistribution is involved.
+
+## Sample Dashboard Preview
+![IPLDataImage1](https://github.com/user-attachments/assets/6c267452-d16f-4500-acd9-098dc1ddae15)
+
 
 
   
