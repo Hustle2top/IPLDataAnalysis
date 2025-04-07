@@ -1,0 +1,63 @@
+-- HIGHEST INDIVIDUAL SCORE
+SELECT PlayerName, MAX(HighestScore) as TopScore FROM iplbat GROUP BY PlayerName ORDER BY TopScore DESC LIMIT 1
+
+-- MOST RUNS IN A SEASON
+SELECT PlayerName, MAX(TotalRuns) as TopTotal FROM iplbat  GROUP BY PlayerName ORDER BY TopTotal DESC LIMIT 1
+
+-- MOST WICKETS IN A SEASON
+SELECT PlayerName, MAX(WicketsTaken) as TopWickets FROm iplbowl GROUP BY PlayerName ORDER BY TopWickets DESC LIMIT 1
+
+-- MOST MAIDENS BOWLED BY A BOWLER
+SELECT PlayerName, ROUND(SUM(Maidens),0) as TotalMaidens FROM iplbowl GROUP BY PlayerName ORDER BY TotalMaidens DESC LIMIT 1
+
+-- TOTAL WICKETS PER YEAR BY EACH TEAM
+SELECT Team, IPLYear, SUM(WicketsTaken) as TotalWicks FROM iplbowl GROUP BY Team, IPLYear ORDER BY Team, IPLYear
+
+-- DISTINCT IPL BOWL YEARS
+SELECT DISTINCT IPLYear FROM iplbowl ORDER BY IPLYear
+
+-- TOTAL RUNS PER YEAR BY EACH TEAM
+SELECT Team, IPLYear, SUM(TotalRuns) as TotalOfRuns FROM iplbat GROUP BY Team, IPLYear ORDER BY Team, IPLYear
+
+
+-- DISTINCT IPL BAT YEARS
+SELECT DISTINCT IPLYear FROM iplbat ORDER BY IPLYear
+
+-- TOTAL RUNS SCORED BY TOP SCORERS FOR EACH TEAM
+SELECT Team, SUM(TotalRuns) as TotalOfRuns FROM iplbat GROUP BY Team ORDER BY TotalOfRuns DESC
+
+-- TOTAL WICKETS TAKEN BY TOP WICKET TAKERS FOR EACH TEAM
+SELECT Team, SUM(WicketsTaken) as TotalOfWicks FROM iplbowl GROUP BY Team ORDER BY TotalOfWicks DESC
+
+-- HIGHEST INDIVIDUAL SCORE PER YEAR
+SELECT PlayerName, IPLYear, HighestScore FROM
+(SELECT PlayerName, IPLYear, HighestScore, RANK() OVER (PARTITION BY IPLYear ORDER BY HighestScore DESC) as ScoreRank FROM iplbat) as abc
+WHERE ScoreRank = 1
+
+-- MOST HALF CENTURIES BY TEAM
+SELECT Team, SUM(HalfCenturies) as Total50s FROM iplbat GROUP BY Team ORDER BY Total50s DESC
+
+-- MOST CENTURIES BY TEAM
+SELECT Team, SUM(Centuries) as Total100s FROM iplbat GROUP BY Team ORDER BY Total100s DESC
+
+-- DISTINCT IPL TEAMS BATTING
+SELECT DISTINCT Team FROM iplbat
+
+-- DISTINCT IPL TEAMS BOWLING
+SELECT DISTINCT Team FROM iplbowl
+
+-- MOST SIX HTTING TEAMS
+SELECT Team, SUM(Sixes) as TotalSixes FROM iplbat GROUP BY Team ORDER BY TotalSixes DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
